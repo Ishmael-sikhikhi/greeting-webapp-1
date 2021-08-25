@@ -1,0 +1,81 @@
+<div class="main  inContainer clearfix">
+    <div class="header">
+        <label for="greetings">
+            <H1 class="myheading" ><strong>Greetings</strong></H1>
+        </label>
+    </div>
+    <div class="behind" style="margin-bottom: 1%; margin-top:1%">
+
+    </div>
+
+    <form action="/greet" method="POST">
+        <div name="message" class="error">
+            {{messages.error}}
+        </div>
+
+        <div class="">
+            <div class="enterName">
+                <div class="">
+                    <label for="name">
+                        <h4>Name</h4>
+                    </label>
+                </div>
+                <div class="nameInput">
+                    <input type="text" name="enteredName" class="enteredName">
+                </div>
+
+                <div class="myCounter"><label for="count"
+                        style="font-size: large; margin-right:10px"><strong>Counter:</strong></label><span
+                        class="counter"><strong>{{count}}</strong></span>
+
+                </div>
+
+            </div>
+            <div class=" languages">
+                <div class="">
+                    <input type="radio" id="r" name="selectedLanguage" class="select-language" value="english">
+                    <label for=""><strong>English</strong></label>
+                </div>
+                <div class="">
+                    <input type="radio" id="r1" name="selectedLanguage" class="select-language" value="afrikaans">
+                    <label for=""><strong>Afrikaans</strong></label>
+                </div>
+                <div class="">
+                    <input type="radio" id="r2" name="selectedLanguage" class="select-language" value="setswana" class=>
+                    <label for=""><strong>Setswana</strong></label>
+                </div>
+            </div>
+            <div class="behind" style="margin-bottom: 1%; margin-top:1%">
+                <div name="message" class="messages">
+                    <h4>{{message}}</h4>
+                </div>
+            </div>
+            <div class="buttons">
+                <div class="grtbtn">
+                    <button class="button-primary greetingsBtn" type="submit">Greet Me</button>
+                </div>
+    </form>
+    {{!-- <form action="/greeted" method="post"> --}}
+        <div class="greeted">
+           <button class="button-primary greetedbtn"  type="submit" style="margin-left: 40%; padding: 
+            2px 1em 2px 1em; background-color:transparent; border:transparent; font-size:
+             large; text-decoration: underline;font-weight: bolder;" value =""><a href="/greeted"> Greeted</a></button>
+        </div>
+
+       
+    <form action="/reset">
+        <div class="reset">
+            <button class="button-primary resettingBtn" style="margin-left: 300%"type="submit">Reset</button>
+    
+    <form action="/reset">
+        <div class="reset">
+        </div>
+    </form>
+</div>
+<div class="row">
+    <div class="">
+        <label for="message" class="storedNames"></label>
+    </div>
+</div>
+</div>
+</div>

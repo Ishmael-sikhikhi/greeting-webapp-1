@@ -1,0 +1,535 @@
+/**
+*** SIMPLE GRID
+*** (C) ZACH COLE 2016
+**/
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,300italic,400italic,700,700italic);
+
+/* UNIVERSAL */
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  font-size: 100%;
+  background-color:  rgb(252, 255, 91);
+  overflow: hidden;
+  
+}
+.myheading{
+  margin-right: 60%;
+}
+.inContainer{
+  /* text-align: center; */
+  width: 80%;
+  margin-left: 30%;
+ 
+}
+.box{  
+  margin-left: 20%;    
+}
+
+button{
+  border-radius:8px;
+  background-color: rgb(1, 4, 24);
+  color: #fff;
+  padding: 2px;
+  margin: auto;
+  }
+.nameInput{
+    padding-top: 25px;
+}
+
+
+/* ROOT FONT STYLES */
+
+* {
+  font-family: 'Lato', Helvetica, sans-serif;
+  color: #333447;
+  line-height: 1.5;
+}
+
+/* TYPOGRAPHY */
+input{
+  padding: 1%;
+}
+
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.375rem;
+}
+
+h4 {
+  font-size: 1.125rem;
+}
+
+h5 {
+  font-size: 1rem;
+}
+
+h6 {
+  font-size: 0.875rem;
+}
+
+p {
+  font-size: 1.125rem;
+  font-weight: 200;
+  line-height: 1.8;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.font-regular {
+  font-weight: 400;
+}
+
+.font-heavy {
+  font-weight: 700;
+}
+
+/* POSITIONING */
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+.header{
+  margin:0 0;
+}
+.myHeader{
+  margin-right: 10%;
+}
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.justify {
+  text-align: justify;
+}
+.enteredName{
+  clear: both;
+}
+
+/* ==== GRID SYSTEM ==== */
+
+.container {  
+  /* text-align: center; */
+  width: 80%;    
+  margin-left: 10%;
+  margin-right: 10%;
+  overflow: hidden;
+}
+.enterName{
+  width: 30%;
+  display: flex;
+  margin-left: 2%;
+}
+.counter{
+  color: rgb(19, 19, 65);
+}
+.myCounter{
+  margin-left: 15%;
+  padding-top: 1.3em;
+}
+.error{
+  color: crimson;
+  margin-right: 50%;
+}
+.buttons{
+  width: 70%;
+  /* display: flex;    */
+  margin-bottom: 5%; 
+  margin-top: 2%;
+}
+ .greetingsBtn button, .greeted button{
+  /* width: 100%; */
+  padding-left: 10px;
+  padding-right: 10px;
+  
+}
+.greeted button{
+  background-color: transparent;
+  color: black;
+}
+
+.nameInput{
+ margin-left: 0px;
+}
+.behind{ 
+  margin-right: 100%;
+}
+.storedNames{  
+  margin:0 0;
+}
+.reset{
+  margin-left: 50%;
+}
+.box{
+  margin-left: 30%;  
+}
+
+.r1, .r2 {
+  margin-left: 5%;
+}
+.row {
+  position: relative;
+  width: 40%;
+}
+.radio-1{
+  margin-left: 2%;
+}
+.radio-2{
+  margin-left: 2%;
+}
+.r, .r1, .r2 {
+  margin-bottom: 5%;
+  margin-top: 3%;
+}
+
+.row [class^="col"] {
+  float: left;
+  margin: 0.5rem 2%;
+  min-height: 0.125rem;
+}
+.clearfix {
+  overflow: auto;
+  zoom: 1;
+}
+.footer{
+  display: flex;
+  justify-content: space-between;
+  
+  margin-top: 8%;
+  margin-left: 2%;
+  margin-right: 2%;
+  font-style: oblique;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+  width: 96%;
+}
+
+.col-1-sm {
+  width: 4.33%;
+}
+
+.col-2-sm {
+  width: 12.66%;
+}
+
+.col-3-sm {
+  width: 21%;
+}
+
+.col-4-sm {
+  width: 29.33%;
+}
+
+.col-5-sm {
+  width: 37.66%;
+}
+
+.col-6-sm {
+  width: 46%;
+}
+
+.col-7-sm {
+  width: 54.33%;
+}
+
+.col-8-sm {
+  width: 62.66%;
+}
+
+.col-9-sm {
+  width: 71%;
+}
+
+.col-10-sm {
+  width: 79.33%;
+}
+
+.col-11-sm {
+  width: 87.66%;
+}
+
+.col-12-sm {
+  width: 96%;
+}
+
+.row::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.hidden-sm {
+  display: none;
+}
+
+@media only screen and (min-width: 33.75em) {  /* 540px */
+  .container {
+    width: 80%;
+    overflow: hidden;
+  }
+  .header{
+    margin-left: 5%;
+  }
+  .box{
+    width: 80%;
+    margin-left: 10%;  
+    margin-right: 10%;
+  }
+}
+
+@media only screen and (min-width: 45em) {  /* 720px */
+  .header{
+    margin-left: 5%;
+  }
+  
+  .col-1 {
+    width: 4.33%;
+  }
+  
+
+  .col-5 {
+    width: 37.66%;
+  }
+
+  .col-6 {
+    width: 46%;
+  }
+
+  .col-7 {
+    width: 54.33%;
+  }
+
+  .col-8 {
+    width: 62.66%;
+  }
+
+  .col-9 {
+    width: 71%;
+  }
+
+  .col-10 {
+    width: 79.33%;
+  }
+
+  .col-11 {
+    width: 87.66%;
+  }
+
+  .col-12 {
+    width: 96%;
+  }
+
+  .hidden-sm {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 60em) { /* 960px */
+  .container {
+    width: 75%;
+    max-width: 60rem;
+  }
+  .header{
+    margin-left: 5%;
+  }
+  .box{
+    width: 80%;
+    margin-left: 10%;  
+    margin-right: 10%;
+  }
+}
+/*  */
+.col-4 churchsquare img{
+  float: right;
+  padding: 15px;
+}
+.lab{
+    margin-right: 80%;
+}
+.error{
+  color: crimson;
+}
+.warning{
+  color: coral;
+}
+.good{
+  color: green;
+}
+@media (min-width:662px){
+  .container {
+    text-align: center;   
+    width: 80%; 
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .languages{
+    display: flex;
+    width: 100%;
+  }
+  .header{
+    margin-left: 5%;
+  }  
+}
+/* 425 */
+@media (max-width: 662px){
+  .languages{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .r, .r1, .r2{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .behind{ 
+    margin-right: 800%;
+  }
+}
+
+@media (max-width:425px) and (min-width: 100px){
+  
+  .header{
+    font-size: 1000;
+    width: 50%;
+    margin: 0 10%;
+  }
+  
+  .box{
+    width: 80%;
+    margin-left: 0%;  
+    margin-right: 0%;
+  }
+}
+
+
+@media (max-width:572px){
+  .header{
+    width: 50%;
+    margin: 0 10%;
+  }  
+  
+  .box{
+    width: 80%;
+    margin-left: 10%;  
+    margin-right: 10%;
+  }
+  .languages{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .buttons{
+    width: 100%;
+    display: flex;   
+    flex-direction: column;
+  }
+  button{
+    padding: 10px;
+  }
+}
+
+@media (min-width:572pxpx){  
+  .container {    
+    width: 80%;      
+  }
+  
+  .header{
+    margin:0 0;
+  }
+  .buttons{
+    display: flex;  
+    margin-bottom: 10%;
+  }
+  .r, .r1, .r2{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .enterName{
+    display: flex;
+  }
+  
+  .nameInput{
+    margin:0 0 20px 0;
+   }
+   .behind{ 
+    margin-right: 100%;
+  }
+  
+}
+@media (min-width: 992px){
+  .container {
+        
+    width: 80%;   
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .header{
+    margin-left: 5%;
+  }
+  
+  .enterName{
+    display: flex;
+  }
+  .buttons{
+    display: flex;  
+  }
+  .nameInput{
+   margin-left: 15%;
+  }
+  .behind{ 
+    margin-right: 50%;
+  }
+  .storedNames{  
+    margin:0 0;
+  }
+  .reset{
+    margin-left: 30%;
+  }
+  .box{
+    margin-left: 30%;  
+  }
+  .languages{
+    display: flex;
+    width: 100%;    
+  }
+}
