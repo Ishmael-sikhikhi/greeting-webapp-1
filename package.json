@@ -20,7 +20,7 @@
     "jquery": "^3.6.0",
     "express-session": "^1.17.2",
     "graceful-fs": "^4.2.8",
-    //"pg": "^8.7.1"
+    "pg": "^8.7.1"
   },
   "scripts": {
     "test": "mocha",
