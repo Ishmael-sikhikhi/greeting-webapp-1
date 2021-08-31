@@ -17,7 +17,9 @@ const connectionString = process.env.DATABASE_URL || 'postgresql://codex:pg123@l
 
 const pool = new Pool({
     connectionString,
-    ssl: useSSL
+    ssl: {
+        rejectUnauthorized : false
+    }
 });
 
 const greetingsFactory = require('./greetingFactory');
