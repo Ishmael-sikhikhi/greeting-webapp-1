@@ -82,12 +82,12 @@ describe('Greetings exercise',()=>{
 
     })
 })
-describe('The basic database web app', function(){
+describe('The basic database web app', async function(){
 
     beforeEach(async function(){
         // clean the tables before each test run
         var greetInstance = greetingsFactory(pool);
-        greetInstance.deletes()
+        await greetInstance.deletes()
     });
 
     it('should pass the db test', async function(){
@@ -95,6 +95,7 @@ describe('The basic database web app', function(){
         // the Factory Function is called CategoryService
        var greetInstance = greetingsFactory(pool);
        
+        await greetInstance.deletes()
         await greetInstance.setLanguage({
             name : "Lwazi"
         });
