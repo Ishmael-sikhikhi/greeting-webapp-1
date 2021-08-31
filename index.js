@@ -108,7 +108,7 @@ app.post('/reset', async (req, res) => {
     await greetInstance.deletes()  
     message = await greetInstance.deletes() 
     
-    res.redirect('/') 
+    res.redirect('/')  
 })
 
 const PORT = process.env.PORT || 3000
