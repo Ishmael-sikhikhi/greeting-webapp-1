@@ -24,9 +24,6 @@ const greetingsFactory = require('./greetingFactory');
 const { request } = require('express');
 const flash = require('express-flash');
 const session = require('express-session');
-const { render } = require('ejs');
-
-
 
 var message = ''
 var count = 0
