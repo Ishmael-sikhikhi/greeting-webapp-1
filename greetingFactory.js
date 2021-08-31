@@ -1,7 +1,7 @@
 'use strict'
 module.exports = function greetingsFactory(pool) {
     var message = ''
-    // var db = require('./db')
+    
     var language
     var name
     var error = 0;
