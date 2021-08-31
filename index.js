@@ -2,7 +2,6 @@
 let express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-// const { pool } = require("./db");
 const pg = require("pg");
 const Pool = pg.Pool;
 
