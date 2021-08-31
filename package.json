@@ -1,5 +1,5 @@
 {
-  "name": "greetings-webapp",
+  "name": "greetings-webapp-1",
   "version": "1.0.0",
   "description": "[![Build Status](https://travis-ci.com/Ishmael-sikhikhi/greetings-webapp.svg?branch=main)](https://travis-ci.com/Ishmael-sikhikhi/greetings-webapp)",
   "main": "index.js",
@@ -18,8 +18,6 @@
     "express-session": "^1.17.2",
     "graceful-fs": "^4.2.8",
     "jquery": "^3.6.0",
-    "express-session": "^1.17.2",
-    "graceful-fs": "^4.2.8",
     "pg": "^8.7.1"
   },
   "scripts": {

@@ -1,5 +1,5 @@
 create table products (
 	id serial not null primary key,
-    description text not null,
-	name varchar(100)
+	name text not null,
+	counter int not null
 );

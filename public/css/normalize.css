@@ -92,6 +92,9 @@ p {
 .font-light {
   font-weight: 300;
 }
+ul{
+  list-style: none;
+}
 
 .font-regular {
   font-weight: 400;
@@ -160,11 +163,14 @@ p {
   margin-bottom: 5%; 
   margin-top: 2%;
 }
- .greetingsBtn button, .greeted button{
+ .greetingsBtn button, .greeted button, .greetedbtn button{
   /* width: 100%; */
   padding-left: 10px;
   padding-right: 10px;
   
+}
+.greetedbtn button{
+  margin-left: 10%;
 }
 .greeted button{
   background-color: transparent;
@@ -386,6 +392,9 @@ p {
 .error{
   color: crimson;
 }
+.info{
+  color: green;
+}
 .warning{
   color: coral;
 }
@@ -512,6 +521,7 @@ p {
   }
   .buttons{
     display: flex;  
+    justify-content: space-between;
   }
   .nameInput{
    margin-left: 15%;
@@ -531,5 +541,12 @@ p {
   .languages{
     display: flex;
     width: 100%;    
+  }
+}
+@media (max-width:991px){
+  .buttons{
+    display: flex;  
+    flex-direction: column;
+    /* margin-bottom: 10%; */
   }
 }

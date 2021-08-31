@@ -1,103 +1,99 @@
 'use strict'
-module.exports = function greetingsFactory() {
-
+module.exports = function greetingsFactory(pool) {
+    var message = ''
     // var db = require('./db')
     var language
     var name
     var error = 0;
     var greetName = []
+    var names = []
 
     var pattern = /^[A-Za-z]+$/
 
-    function setLanguage(greet) {
-        var message = ''
-        //errors when information is not correct
-        name = greet.name
-        language = greet.language
-        name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase()
-        if (pattern.test(name)) {
-            /* object fill or refill */
+    async function setLanguage(greet) {
+        
 
-            if (greetName.length == 0) {
-                greetName.push({
-                    name: name,
-                    greet: 1,
-                    username: name
+        try {
+            name = greet.name
+            language = greet.language
+            name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 
-                });
+            if (pattern.test(name)) {
+                var checkName = await pool.query(`select name from users where name = $1`, [name]);
+                if (checkName.rowCount === 0) {
+                    await pool.query(`insert into users (name, counter) values ($1,$2)`, [name, 1])
+                }
+                else {
+                    await pool.query(`update users set counter = counter + 1 where name = $1`, [name]);
+                }
 
-            } else {
-                if(!greetName.some(greetName => greetName.name === name)){
-                    greetName.push({
-                        name: name,
-                        greet: 1,
-                        username: name
+                if (language === 'english' && name !== '') {
+                    return message = 'Hello' + ', ' + name
+                }
 
-                    });
-                }else {
-                    greetName.forEach(element => {
-                        if(element.name === name){
-                            element.greet++
-                            
-                        }
-                    });
+                else if (language === 'afrikaans' && name !== '') {
+                    return message = 'Hallo' + ', ' + name
+                }
+
+                else if (language === 'setswana' && name !== '') {
+                    return message = 'Dumela' + ', ' + name
                 }
             }
-
-            if (language === 'english' && name !== '') {
-                return message = 'Hello' + ', ' + name
-            }
-
-            else if (language === 'afrikaans' && name !== '') {
-                return message = 'Hallo' + ', ' + name
-            }
-
-            else if (language === 'setswana' && name !== '') {
-                return message = 'Dumela' + ', ' + name
-            }
         }
-    }
-    function getNameAndLanguage() {
-        return {
-            name,
-            language
+        catch (err) {
+            console.error('Error Occurred', err);
+            throw err;
         }
+
+
     }
 
-    // function objectValues(){
-        
-    // }
 
-    function getName() {
-        return name
+    async function countNames() {
+        var count = 0;
+        try {
+            names = await pool.query(`select * from users`);
+            count = names.rows.length;
+        }
+        catch (err) {
+            console.error('Error Occurred', err);
+            throw err;
+        }
+        return count
     }
 
-    function howManyTimesEachName(theName){
+    async function getNames() {
+        var thenames = await pool.query(`select name from users`)
+        greetName = thenames.rows
+        return thenames.rows
+    }
+
+
+
+    async function howManyTimesEachName(theName) {
         let selectName;
+        var count = await pool.query(`select counter from users where name = $1`, [theName])
+        count = count.rows
 
-        greetName.forEach(element => {
-            if(element.username === theName){
-                selectName = {
-                    name: element.name,
-                    greet: element.greet
-
-                };
-            }
-        });
-
-        return selectName;
+        return count[0].counter;
     }
 
-    function countNames() {
-        return Object.keys(greetName).length
+    async function deletes() {
+        try {
+            await pool.query(`DELETE FROM users`);
+        } catch (err) {
+            console.error('Error Occurred', err);
+            throw err;
+        }
+
+        return ''
     }
 
-    // function obj() {
-    //     return Object.keys(greetName)
-    // }
-
-    function getNamesObj() {
-        return greetName
+     async function information(){
+         let database = await pool.query(`select * from users`)
+        if(database.length === 0){
+            return 'App has reseted successfully!'
+        }
     }
 
     function errorMessages() {
@@ -111,10 +107,10 @@ module.exports = function greetingsFactory() {
     return {
         setLanguage,
         countNames,
-        getName,
-        getNameAndLanguage,
         errorMessages,
-        getNamesObj,
-        howManyTimesEachName
+        howManyTimesEachName,
+        getNames,
+        deletes,
+        information
     }
 }

@@ -2,10 +2,10 @@
 let express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
-const { pool } = require("./db");
-
+// const { pool } = require("./db");
 const pg = require("pg");
-// const Pool = pg.Pool;
+const Pool = pg.Pool;
+
 
 // should we use a SSL connection
 let useSSL = false;
@@ -14,23 +14,30 @@ if (process.env.DATABASE_URL && !local) {
     useSSL = true;
 }
 // which db connection to use
-const connectionString = process.env.DATABASE_URL || 'postgresql://coder:pg123@localhost:5432/kitcats';
+const connectionString = process.env.DATABASE_URL || 'postgresql://codex:pg123@localhost:5432/the_greeted';
 
+const pool = new Pool({
+    connectionString,
+    ssl: useSSL
+});
 
 const greetingsFactory = require('./greetingFactory');
 const { request } = require('express');
 const flash = require('express-flash');
 const session = require('express-session');
+const { render } = require('ejs');
 
 
 
 var message = ''
 var count = 0
+var counter = 0
 let names = []
-let namesObj = {};
+let deletes
 let app = express();
 
-const greetInstance = greetingsFactory()
+const greetInstance = greetingsFactory(pool);
+
 
 // initialise session middleware - flash-express depends on it
 app.use(session({
@@ -49,64 +56,63 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static('public'));
 
-app.get("/", (req, res) => {
-
-    req.flash('error', greetInstance.errorMessages())
+app.get("/", async (req, res) => {
+    count = await greetInstance.countNames(),
+    req.flash('error', greetInstance.errorMessages()) 
+     
     res.render("index",
         {
             message,
             count,
             names,
+            deletes
         });
 });
-app.post("/greet", (req, res) => {
-    message = greetInstance.setLanguage({
-        name: req.body.enteredName,
-        language: req.body.selectedLanguage
-    })
-    var name = greetInstance.getName()
-    count = greetInstance.countNames()
-    pool.query('SELECT * FROM users where name = $1', [name], (err, results)=>{
-        if (err){
-            throw err;
-        }
+app.post("/greet", async (req, res) => {
+    try{
+        message = await greetInstance.setLanguage({
+            name: req.body.enteredName,
+            language: req.body.selectedLanguage
+        })
+    }catch(err){
         
-        console.log(results.rows)
-    });
-    // await pool.query('insert into users (name) values ($1)',name)
+    }
+    
+    
     res.redirect("/");
 });
 
-app.get('/greeted', (req, res) => {
-   
-    namesObj = greetInstance.getNamesObj()
-    names = namesObj
+app.get('/greeted', async (req, res) => {
+
+    names = await greetInstance.getNames()
     res.render('greeted', {
         names
     });
-   
+
     // res.redirect('/')
 })
 
-app.get('/greeted-times/:username', (req, res) => {
-    const selectedName = req.params.username;
-
-    res.render('greeted-times', {
-        greetedName: greetInstance.howManyTimesEachName(selectedName)
-    })
+app.get('/greeted-times/:name', async (req, res) => {
+    const selectedName = req.params.name;
+    counter = await greetInstance.howManyTimesEachName(selectedName)
     
+    // console.log(greetInstance.howManyTimesEachName(selectedName))
+    res.render('greeted-times', {
+       selectedName, 
+       counter
+    })
+
     // res.redirect('/')
 })
-app.get('/actions', (req, res) => {
-    // res.render('actions', { actions: greetInstance.actions() })
-})
-app.get('/actions/:actionType', (req, res) => {
-    // const actionType = req.params.actionType
-    // res.render('actions', { actions: greetInstance.actionsFor(actionType) })
+app.post('/reset', async (req, res) => {      
+    await greetInstance.deletes()  
+    message = await greetInstance.deletes() 
+    
+    res.redirect('/')
 })
 
 const PORT = process.env.PORT || 3000
-0
+
 app.listen(PORT, () => {
-    console.log('App started at port:', PORT)
+    console.log(`App started at port:${PORT}`)
 })

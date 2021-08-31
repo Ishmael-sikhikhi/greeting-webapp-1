@@ -1,18 +1,21 @@
 <div class="main  inContainer clearfix">
     <div class="header">
         <label for="greetings">
-            <H1 class="myheading" ><strong>Greetings</strong></H1>
+            <H1 class="myheading"><strong>Greetings</strong></H1>
         </label>
     </div>
     <div class="behind" style="margin-bottom: 1%; margin-top:1%">
 
     </div>
 
+    <div name="message" class="info">
+        {{messages.info}}
+    </div>
+
     <form action="/greet" method="POST">
         <div name="message" class="error">
             {{messages.error}}
         </div>
-
         <div class="">
             <div class="enterName">
                 <div class="">
@@ -54,28 +57,27 @@
                 <div class="grtbtn">
                     <button class="button-primary greetingsBtn" type="submit">Greet Me</button>
                 </div>
+
     </form>
     {{!-- <form action="/greeted" method="post"> --}}
+
+
+        <form action="/reset" method="POST">
+
+            <button class="button-primary resetBtn" type="submit" value="">Reset</button>
+
+        </form>
+        <br>
         <div class="greeted">
-           <button class="button-primary greetedbtn"  type="submit" style="margin-left: 40%; padding: 
+            <button class="button-primary greetedbtn" type="submit" style="margin-left: 40%; padding: 
             2px 1em 2px 1em; background-color:transparent; border:transparent; font-size:
-             large; text-decoration: underline;font-weight: bolder;" value =""><a href="/greeted"> Greeted</a></button>
+             large; text-decoration: underline;font-weight: bolder;" value=""><a href="/greeted"> Greeted</a></button>
         </div>
 
-       
-    <form action="/reset">
-        <div class="reset">
-            <button class="button-primary resettingBtn" style="margin-left: 300%"type="submit">Reset</button>
-    
-    <form action="/reset">
-        <div class="reset">
+        <div class="row">
+            <div class="">
+                <label for="message" class="storedNames"></label>
+            </div>
         </div>
-    </form>
-</div>
-<div class="row">
-    <div class="">
-        <label for="message" class="storedNames"></label>
-    </div>
-</div>
 </div>
 </div>
