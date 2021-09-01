@@ -12,7 +12,7 @@ const pool = new Pool({
 });
 
 
-describe('Greetings exercise',()=>{
+describe('Greetings exercise', async ()=>{
     beforeEach(async function(){
         // clean the tables before each test run
         await pool.query("delete from users;");
@@ -33,7 +33,12 @@ describe('Greetings exercise',()=>{
 
         assert('Please select language' ,greetInstance.setLanguage({name:"Lwazi",language:""}))
     })
-    describe("Validate name",()=>{
+    describe("Validate name", async ()=>{
+        beforeEach(async function(){
+            // clean the tables before each test run
+            await pool.query("delete from users;");
+            
+        });
         it('It should reject the digits entered instead of alphabets for name',()=>{
             var greetInstance = greetingsFactory(pool)
 
@@ -45,7 +50,11 @@ describe('Greetings exercise',()=>{
             assert('Name must accommodate letters' ,greetInstance.setLanguage({name:"$3@",language:"english"}))
         })
     })
-    describe("Accepted name and language is selected",()=>{
+    describe("Accepted name and language is selected",async ()=>{
+        beforeEach(async function(){
+            // clean the tables before each test run
+            await pool.query("delete from users;");            
+        });
         it('It should greet in english when language is english',()=>{
             var greetInstance = greetingsFactory(pool)
             assert('Hello, Lwazi',greetInstance.setLanguage({name:"Lwazi",language:"english"}))
@@ -60,6 +69,12 @@ describe('Greetings exercise',()=>{
         })
     })
     describe("Increment counter",()=>{
+        beforeEach(async function(){
+            // clean the tables before each test run
+            await pool.query("delete from users;");
+            
+        });
+
         it('It should incerement counter when name is greeted for the first time',()=>{
             var greetInstance = greetingsFactory(pool)
             greetInstance.setLanguage({name:"Phendula",language:"setswana"})

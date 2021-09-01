@@ -18,7 +18,7 @@ const connectionString = process.env.DATABASE_URL || 'postgresql://codex:pg123@l
 const pool = new Pool({
     connectionString,
     ssl: {
-        rejectaUnauthorized : false
+        rejectUnauthorized: false
     }
 });
 
@@ -56,27 +56,37 @@ app.use(express.static('public'));
 
 app.get("/", async (req, res) => {
     count = await greetInstance.countNames(),
-    req.flash('error', greetInstance.errorMessages()) 
-     
-    res.render("index",
-        {
-            message,
-            count,
-            names,
-            deletes
-        });
+        res.render("index",
+            {
+                message,
+                count,
+                names,
+                deletes
+            });
 });
 app.post("/greet", async (req, res) => {
-    try{
+
+    var name = req.body.enteredName
+    var lang = req.body.selectedLanguage
+    if (!lang && !name) {
+        req.flash('error', 'Enter name and select a language')
+    }
+    else if (!lang) {
+        req.flash('error', 'Please select a language')
+    }
+    else if (name === '') {
+        req.flash('error', 'Please enter a name')
+    }
+
+
+    else {
         message = await greetInstance.setLanguage({
             name: req.body.enteredName,
             language: req.body.selectedLanguage
         })
-    }catch(err){
-        
     }
-    
-    
+
+
     res.redirect("/");
 });
 
@@ -93,20 +103,20 @@ app.get('/greeted', async (req, res) => {
 app.get('/greeted-times/:name', async (req, res) => {
     const selectedName = req.params.name;
     counter = await greetInstance.howManyTimesEachName(selectedName)
-    
+
     // console.log(greetInstance.howManyTimesEachName(selectedName))
     res.render('greeted-times', {
-       selectedName, 
-       counter
+        selectedName,
+        counter
     })
 
     // res.redirect('/')
 })
-app.post('/reset', async (req, res) => {      
-    await greetInstance.deletes()  
-    message = await greetInstance.deletes() 
-    
-    res.redirect('/')  
+app.post('/reset', async (req, res) => {
+    await greetInstance.deletes()
+    message = await greetInstance.deletes()
+
+    res.redirect('/')
 })
 
 const PORT = process.env.PORT || 3000

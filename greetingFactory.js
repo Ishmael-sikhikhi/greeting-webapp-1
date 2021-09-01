@@ -19,13 +19,15 @@ module.exports = function greetingsFactory(pool) {
             name = name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
 
             if (pattern.test(name)) {
-                var checkName = await pool.query(`select name from users where name = $1`, [name]);
-                if (checkName.rowCount === 0) {
-                    await pool.query(`insert into users (name, counter) values ($1,$2)`, [name, 1])
-                }
-                else {
-                    await pool.query(`update users set counter = counter + 1 where name = $1`, [name]);
-                }
+                if (name && language){
+                    var checkName = await pool.query(`select name from users where name = $1`, [name]);
+                    if (checkName.rowCount === 0) {
+                        await pool.query(`insert into users (name, counter) values ($1,$2)`, [name, 1])
+                    }
+                    else {
+                        await pool.query(`update users set counter = counter + 1 where name = $1`, [name]);
+                    }
+               }
 
                 if (language === 'english' && name !== '') {
                     return message = 'Hello' + ', ' + name
