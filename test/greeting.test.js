@@ -86,9 +86,7 @@ describe('Greetings exercise',()=>{
             greetInstance.setLanguage({name:"Lwazi",language:"afrikaans"})
             assert(2,greetInstance.countNames)
         })
-
-    })
-   
+    })   
 })
 describe('The basic database web app', async function(){
 
