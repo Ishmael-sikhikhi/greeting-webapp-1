@@ -13,6 +13,11 @@ const pool = new Pool({
 
 
 describe('Greetings exercise',()=>{
+    beforeEach(async function(){
+        // clean the tables before each test run
+        var greetInstance = greetingsFactory(pool);
+        await greetInstance.deletes()
+    });
     it('It should ask for name and language when user did not inserted name and select language are  ', ()=>{
         var greetInstance = greetingsFactory(pool)
         
@@ -72,7 +77,9 @@ describe('Greetings exercise',()=>{
             greetInstance.setLanguage({name:"Lwazi",language:"afrikaans"})
             assert(2,greetInstance.countNames)
         })
+       
         it('It should not incerement counter when another name is greeted more than once',()=>{
+            
             var greetInstance = greetingsFactory(pool)
             greetInstance.setLanguage({name:"Phendula",language:"setswana"})
             greetInstance.setLanguage({name:"Lwazi",language:"afrikaans"})
@@ -81,6 +88,7 @@ describe('Greetings exercise',()=>{
         })
 
     })
+   
 })
 describe('The basic database web app', async function(){
 
