@@ -15,8 +15,8 @@ const pool = new Pool({
 describe('Greetings exercise',()=>{
     beforeEach(async function(){
         // clean the tables before each test run
-        var greetInstance = greetingsFactory(pool);
-        await greetInstance.deletes()
+        await pool.query("delete from users;");
+        
     });
     it('It should ask for name and language when user did not inserted name and select language are  ', ()=>{
         var greetInstance = greetingsFactory(pool)
@@ -92,8 +92,7 @@ describe('The basic database web app', async function(){
 
     beforeEach(async function(){
         // clean the tables before each test run
-        var greetInstance = greetingsFactory(pool);
-        await greetInstance.deletes()
+        await pool.query("delete from users;");
     });
 
     it('should pass the db test', async function(){
