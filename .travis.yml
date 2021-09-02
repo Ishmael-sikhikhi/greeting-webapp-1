@@ -1,8 +1,9 @@
 language: node_js
+
 node_js:
   - "12"
   
-  env:
+env:
   - DATABASE_URL=postgresql://postgres@localhost:5432/greet_tests
 
 before_script:
