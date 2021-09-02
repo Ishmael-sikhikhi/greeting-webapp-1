@@ -5,19 +5,21 @@ const Pool = pg.Pool;
 
 
 // we are using a special test database for the tests
-const connectionString = process.env.DATABASE_URL || 'postgresql://localhost:5432/greet_tests';
+const connectionString = process.env.DATABASE_URL || 'postgresql://codex:pg123@localhost:5432/greet_tests';
 
 const pool = new Pool({
     connectionString
 });
 
+beforeEach(async function(){
+    // clean the tables before each test run
+    await pool.query("delete from users;");
+    
+});
+
 
 describe('Greetings exercise', async ()=>{
-    beforeEach(async function(){
-        // clean the tables before each test run
-        await pool.query("delete from users;");
-        
-    });
+   
     it('It should ask for name and language when user did not inserted name and select language are  ', ()=>{
         var greetInstance = greetingsFactory(pool)
         
