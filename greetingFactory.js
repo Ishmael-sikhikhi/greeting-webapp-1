@@ -10,8 +10,7 @@ module.exports = function greetingsFactory(pool) {
 
     var pattern = /^[A-Za-z]+$/
 
-    async function setLanguage(greet) {
-        
+    async function setLanguage(greet) {      
 
         try {
             name = greet.name

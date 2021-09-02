@@ -7,4 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
             infoElem.innerHTML = '';
         }, 3000);
     }
+
 });
+

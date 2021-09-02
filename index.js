@@ -86,7 +86,6 @@ app.post("/greet", async (req, res) => {
         })
     }
 
-
     res.redirect("/");
 });
 

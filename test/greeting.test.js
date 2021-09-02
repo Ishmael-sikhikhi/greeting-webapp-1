@@ -117,7 +117,8 @@ describe('The basic database web app', async function(){
        
         await greetInstance.deletes()
         await greetInstance.setLanguage({
-            name : "Lwazi"
+            name : "Lwazi",
+            language : 'english'
         });
 
         let size = await greetInstance.getNames();

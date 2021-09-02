@@ -20,15 +20,15 @@ body {
   overflow: hidden;
   
 }
-.myheading{
-  margin-right: 60%;
-}
 .inContainer{
-  /* text-align: center; */
   width: 80%;
   margin-left: 30%;
  
 }
+.myheading{
+  margin-right: 60%;
+}
+
 .box{  
   margin-left: 20%;    
 }
