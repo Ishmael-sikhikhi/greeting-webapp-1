@@ -1,4 +1,4 @@
-<div class="main  inContainer clearfix">
+<div class="main  clearfix">
     <div class="header">
         <label for="greetings">
             <H1 class="myheading"><strong>Greetings</strong></H1>
@@ -16,17 +16,16 @@
         <div name="message" class="error">
             {{messages.error}}
         </div>
-        <div class="">
             <div class="enterName">
-                <div class="">
+                
                     <label for="name">
                         <h4>Name</h4>
                     </label>
-                </div>
+               
                 <div class="nameInput">
                     <input type="text" name="enteredName" class="enteredName">
                 </div>
-
+    
                 <div class="myCounter"><label for="count"
                         style="font-size: large; margin-right:10px"><strong>Counter:</strong></label><span
                         class="counter"><strong>{{count}}</strong></span>
@@ -67,12 +66,17 @@
             <button class="button-primary resetBtn" type="submit" value="">Reset</button>
 
         </form>
+         
+        
         <br>
+        </div>
         <div class="greeted">
-            <button class="button-primary greetedbtn" type="submit" style="margin-left: 40%; padding: 
+            <button class="button-primary greetedbtn" type="submit" style="
+            ; padding: 
             2px 1em 2px 1em; background-color:transparent; border:transparent; font-size:
              large; text-decoration: underline;font-weight: bolder;" value=""><a href="/greeted"> Greeted</a></button>
         </div>
+       
 
         <div class="row">
             <div class="">

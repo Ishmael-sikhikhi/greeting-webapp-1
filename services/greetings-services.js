@@ -1,5 +1,5 @@
 'use strict'
-module.exports = function greetingsFactory(pool) {
+module.exports = function GreetingsService(pool) {
     var message = ''
     
     var language

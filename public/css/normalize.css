@@ -17,31 +17,47 @@ body {
   top: 0;
   font-size: 100%;
   background-color:  rgb(252, 255, 91);
-  overflow: hidden;
-  
+  overflow: hidden;  
 }
-.inContainer{
-  width: 80%;
-  margin-left: 30%;
+.container {   
+  width: 80%;    
+  margin-left: 10%;
+  margin-right: 10%;
+  overflow: hidden;  
+}
+.main{
+  border: solid blue;
+  height: 400px;
+  margin-left: 20%;
+  margin-right: 20%;
  
 }
-.myheading{
-  margin-right: 60%;
-}
 
-.box{  
-  margin-left: 20%;    
+.myheading{
+  text-align: center;
+  color: yellow;
+  background-color: blue;
+  margin-top: 0%;
+  margin-left: 0%;
+  margin-right: 5%;
+}
+.messages{
+  margin-left: 50%;
+  width: 100%;
+  height: 30px;
 }
 
 button{
   border-radius:8px;
-  background-color: rgb(1, 4, 24);
-  color: #fff;
+  width: 90px;
+  background-color: blue;
+  color: #000;
   padding: 2px;
   margin: auto;
   }
 .nameInput{
     padding-top: 25px;
+    margin-left: 10%;
 }
 
 
@@ -57,7 +73,6 @@ button{
 input{
   padding: 1%;
 }
-
 
 h1 {
   font-size: 2.5rem;
@@ -89,62 +104,27 @@ p {
   line-height: 1.8;
 }
 
-.font-light {
-  font-weight: 300;
-}
 ul{
   list-style: none;
 }
 
-.font-regular {
-  font-weight: 400;
-}
-
-.font-heavy {
-  font-weight: 700;
-}
-
-/* POSITIONING */
-
-.left {
-  text-align: left;
-}
-
-.right {
-  text-align: right;
-}
 .header{
   margin:0 0;
 }
-.myHeader{
-  margin-right: 10%;
-}
+
 .center {
   text-align: center;
   margin-left: auto;
   margin-right: auto;
 }
 
-.justify {
-  text-align: justify;
-}
-.enteredName{
-  clear: both;
-}
+
 
 /* ==== GRID SYSTEM ==== */
 
-.container {  
-  /* text-align: center; */
-  width: 80%;    
-  margin-left: 10%;
-  margin-right: 10%;
-  overflow: hidden;
-}
 .enterName{
-  width: 30%;
   display: flex;
-  margin-left: 2%;
+  justify-content: center;
 }
 .counter{
   color: rgb(19, 19, 65);
@@ -158,28 +138,9 @@ ul{
   margin-right: 50%;
 }
 .buttons{
-  width: 70%;
-  /* display: flex;    */
-  margin-bottom: 5%; 
-  margin-top: 2%;
-}
- .greetingsBtn button, .greeted button, .greetedbtn button{
-  /* width: 100%; */
-  padding-left: 10px;
-  padding-right: 10px;
-  
-}
-.greetedbtn button{
-  margin-left: 10%;
-}
-.greeted button{
-  background-color: transparent;
-  color: black;
+  width: 100%;
 }
 
-.nameInput{
- margin-left: 0px;
-}
 .behind{ 
   margin-right: 100%;
 }
@@ -211,11 +172,6 @@ ul{
   margin-top: 3%;
 }
 
-.row [class^="col"] {
-  float: left;
-  margin: 0.5rem 2%;
-  min-height: 0.125rem;
-}
 .clearfix {
   overflow: auto;
   zoom: 1;
@@ -232,164 +188,9 @@ ul{
   padding-right: 2%;
 }
 
-.col-1,
-.col-2,
-.col-3,
-.col-4,
-.col-5,
-.col-6,
-.col-7,
-.col-8,
-.col-9,
-.col-10,
-.col-11,
-.col-12 {
-  width: 96%;
-}
 
-.col-1-sm {
-  width: 4.33%;
-}
-
-.col-2-sm {
-  width: 12.66%;
-}
-
-.col-3-sm {
-  width: 21%;
-}
-
-.col-4-sm {
-  width: 29.33%;
-}
-
-.col-5-sm {
-  width: 37.66%;
-}
-
-.col-6-sm {
-  width: 46%;
-}
-
-.col-7-sm {
-  width: 54.33%;
-}
-
-.col-8-sm {
-  width: 62.66%;
-}
-
-.col-9-sm {
-  width: 71%;
-}
-
-.col-10-sm {
-  width: 79.33%;
-}
-
-.col-11-sm {
-  width: 87.66%;
-}
-
-.col-12-sm {
-  width: 96%;
-}
-
-.row::after {
-	content: "";
-	display: table;
-	clear: both;
-}
-
-.hidden-sm {
-  display: none;
-}
-
-@media only screen and (min-width: 33.75em) {  /* 540px */
-  .container {
-    width: 80%;
-    overflow: hidden;
-  }
-  .header{
-    margin-left: 5%;
-  }
-  .box{
-    width: 80%;
-    margin-left: 10%;  
-    margin-right: 10%;
-  }
-}
-
-@media only screen and (min-width: 45em) {  /* 720px */
-  .header{
-    margin-left: 5%;
-  }
-  
-  .col-1 {
-    width: 4.33%;
-  }
-  
-
-  .col-5 {
-    width: 37.66%;
-  }
-
-  .col-6 {
-    width: 46%;
-  }
-
-  .col-7 {
-    width: 54.33%;
-  }
-
-  .col-8 {
-    width: 62.66%;
-  }
-
-  .col-9 {
-    width: 71%;
-  }
-
-  .col-10 {
-    width: 79.33%;
-  }
-
-  .col-11 {
-    width: 87.66%;
-  }
-
-  .col-12 {
-    width: 96%;
-  }
-
-  .hidden-sm {
-    display: block;
-  }
-}
-
-@media only screen and (min-width: 60em) { /* 960px */
-  .container {
-    width: 75%;
-    max-width: 60rem;
-  }
-  .header{
-    margin-left: 5%;
-  }
-  .box{
-    width: 80%;
-    margin-left: 10%;  
-    margin-right: 10%;
-  }
-}
-/*  */
-.col-4 churchsquare img{
-  float: right;
-  padding: 15px;
-}
-.lab{
-    margin-right: 80%;
-}
 .error{
+  margin-left: 20%;
   color: crimson;
 }
 .info{
@@ -417,11 +218,16 @@ ul{
   }  
 }
 /* 425 */
-@media (max-width: 662px){
+@media (max-width: 769px){
+  main{
+    height: 768px;
+  }
+  .enteredName{
+    flex-direction: column;
+  }
   .languages{
     display: flex;
     flex-direction: column;
-    width: 100%;
   }
   .r, .r1, .r2{
     width: 80%;
@@ -459,34 +265,16 @@ ul{
     width: 80%;
     margin-left: 10%;  
     margin-right: 10%;
-  }
-  .languages{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .buttons{
-    width: 100%;
-    display: flex;   
-    flex-direction: column;
-  }
-  button{
-    padding: 10px;
-  }
+  }  
 }
 
-@media (min-width:572pxpx){  
-  .container {    
-    width: 80%;      
-  }
-  
+@media (min-width:572pxpx){    
   .header{
     margin:0 0;
   }
   .buttons{
     display: flex;  
-    margin-bottom: 10%;
+    flex-direction: column;
   }
   .r, .r1, .r2{
     width: 80%;
@@ -497,17 +285,13 @@ ul{
     display: flex;
   }
   
-  .nameInput{
-    margin:0 0 20px 0;
-   }
-   .behind{ 
+  .behind{ 
     margin-right: 100%;
   }
   
 }
 @media (min-width: 992px){
-  .container {
-        
+  .container {        
     width: 80%;   
     margin-left: 10%;
     margin-right: 10%;
@@ -521,10 +305,10 @@ ul{
   }
   .buttons{
     display: flex;  
-    justify-content: space-between;
+    justify-content: center;
   }
-  .nameInput{
-   margin-left: 15%;
+  .resetBtn{
+    margin-left: 40%;
   }
   .behind{ 
     margin-right: 50%;
@@ -540,13 +324,16 @@ ul{
   }
   .languages{
     display: flex;
-    width: 100%;    
+    width: 70%;   
+    justify-content: center; 
+    justify-content: space-around;
+    margin-left: 15%;
+    margin-right: 15%;
   }
 }
 @media (max-width:991px){
   .buttons{
     display: flex;  
     flex-direction: column;
-    /* margin-bottom: 10%; */
   }
 }
