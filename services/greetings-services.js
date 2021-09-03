@@ -87,29 +87,12 @@ module.exports = function GreetingsService(pool) {
 
         return ''
     }
-
-     async function information(){
-         let database = await pool.query(`select * from users`)
-        if(database.length === 0){
-            return 'App has reseted successfully!'
-        }
-    }
-
-    function errorMessages() {
-        if (name === '') {
-            return "Please enter name";
-        }
-        if (name !== '' && name !== undefined && language == undefined) {
-            return "Please select a language";
-        }
-    }
+    
     return {
         setLanguage,
         countNames,
-        errorMessages,
         howManyTimesEachName,
         getNames,
         deletes,
-        information
     }
 }
