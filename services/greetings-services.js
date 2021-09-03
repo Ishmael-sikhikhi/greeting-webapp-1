@@ -10,6 +10,7 @@ module.exports = function GreetingsService(pool) {
 
     var pattern = /^[A-Za-z]+$/
 
+    //set name and language
     async function setLanguage(greet) {      
 
         try {

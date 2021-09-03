@@ -17,7 +17,7 @@ module.exports = function (greetingsService) {
                 req.flash('error', 'Please enter a name')
             }
 
-            else {
+            else if(name, lang){
                 res.render('index', {
                     message: await greetingsService.setLanguage({
                         name: name,
@@ -25,7 +25,6 @@ module.exports = function (greetingsService) {
                     })
                 });
             }
-            res.redirect("/");
         }
         catch (err) {
             console.error('Error occured on greet!', err)
