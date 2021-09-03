@@ -72,10 +72,9 @@ module.exports = function (greetingsService) {
     };
     async function resetDB(req, res) {
         await greetingsService.deletes()
-        req.flash('info', 'Database has successfully resetted!')
-        res.render('index', {
-
-        })
+         req.flash('info', 'Database has successfully resetted!')
+        // 
+        res.redirect("/");
     };
 
     function getCount(req, res) {
