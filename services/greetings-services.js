@@ -45,11 +45,9 @@ module.exports = function GreetingsService(pool) {
             console.error('Error Occurred', err);
             throw err;
         }
-
-
     }
 
-
+    //counter
     async function countNames() {
         var count = 0;
         try {
@@ -63,14 +61,14 @@ module.exports = function GreetingsService(pool) {
         return count
     }
 
+    //all greeted names
     async function getNames() {
         var thenames = await pool.query(`select name from users`)
         greetName = thenames.rows
         return thenames.rows
     }
 
-
-
+    //how many timeseach name has been greeted
     async function howManyTimesEachName(theName) {
         let selectName;
         var count = await pool.query(`select counter from users where name = $1`, [theName])

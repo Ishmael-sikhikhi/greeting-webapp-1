@@ -61,20 +61,13 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static('public'));
 
-app.get("/", (req,res)=>{
-    res.render('index')
-});
-app.post('/greet',greeingsRoutes.greet,greeingsRoutes.count);
+app.get("/", greeingsRoutes.count);
+app.post('/greet',greeingsRoutes.greet);
 
 app.get('/greeted', greeingsRoutes.all);
 
 app.get('/greeted-times/:name',greeingsRoutes.times)
-app.post('/reset', async (req, res) => {
-    await greetingsService.deletes()
-    message = await greetingsService.deletes()
-
-    res.redirect('/')
-})
+app.post('/reset', greeingsRoutes.resetDB);
 
 const PORT = process.env.PORT || 3001
 

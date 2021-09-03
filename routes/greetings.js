@@ -1,7 +1,7 @@
 const GreetingsService = require('../services/greetings-services');
 
 
-module.exports = function (greeetingsService) {
+module.exports = function (greetingsService) {
 
     async function greet(req, res) {
         try {
@@ -13,19 +13,19 @@ module.exports = function (greeetingsService) {
             else if (!lang) {
                 req.flash('error', 'Please select a language')
             }
-            else if (name === '') {
+            else if (!name ) {
                 req.flash('error', 'Please enter a name')
             }
 
             else {
                 res.render('index', {
-                    message: await greeetingsService.setLanguage({
+                    message: await greetingsService.setLanguage({
                         name: name,
                         language: lang
                     })
                 });
             }
-            // res.redirect("/");
+            res.redirect("/");
         }
         catch (err) {
             console.error('Error occured on greet!', err)
@@ -34,30 +34,40 @@ module.exports = function (greeetingsService) {
     };
 
     async function count(req, res) {
-        count: await greeetingsService.countNames()
+        res.render('index', {
+            count: await greetingsService.countNames()
+        })
     };
-    async function all(req, res){
-       var names =  await greeetingsService.getNames()
+    async function all(req, res) {
+        var names = await greetingsService.getNames()
         res.render('greeted', {
             names
         });
-    }
+    };
     async function times(req, res) {
         const selectedName = req.params.name;
-        counter = await greeetingsService.howManyTimesEachName(selectedName)
+        counter = await greetingsService.howManyTimesEachName(selectedName)
 
         // console.log(greetingsService.howManyTimesEachName(selectedName))
         res.render('greeted-times', {
             selectedName,
             counter
         })
-    }
+    };
+    async function resetDB(req, res) {
+        await greetingsService.deletes()
+        req.flash('info', 'Database has successfully resetted!')
+        res.render('index', {
+
+        })
+    };
 
     return {
         greet,
         count,
         all,
-        times
+        times,
+        resetDB,
     }
 
 }

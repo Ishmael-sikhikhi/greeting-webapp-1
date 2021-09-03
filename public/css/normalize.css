@@ -125,12 +125,14 @@ ul{
 .enterName{
   display: flex;
   justify-content: center;
+  width: 70;
+  margin-left: 15;
 }
 .counter{
   color: rgb(19, 19, 65);
 }
 .myCounter{
-  margin-left: 15%;
+  margin-left: 3%;
   padding-top: 1.3em;
 }
 .error{
