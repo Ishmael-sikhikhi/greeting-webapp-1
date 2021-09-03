@@ -49,7 +49,7 @@ module.exports = function (greetingsService) {
             console.error('Error occured on greet!', err)
             netx(err)
         }
-        res.redirect("/");
+        return res.redirect("/");
     };
 
     async function all(req, res) {
@@ -57,7 +57,6 @@ module.exports = function (greetingsService) {
         res.render('greeted', {
             names
         });
-        res.redirect("/");
     };
     async function times(req, res) {
         const selectedName = req.params.name;
@@ -68,26 +67,21 @@ module.exports = function (greetingsService) {
             selectedName,
             counter
         })
-        res.redirect("/");
     };
     async function resetDB(req, res) {
         await greetingsService.deletes()
          req.flash('info', 'Database has successfully resetted!')
         // 
-        res.redirect("/");
+        return res.redirect("/");
     };
 
-    function getCount(req, res) {
-        res.render('index', { count })
-    }
 
     return {
         greet,
         home,
         all,
         times,
-        resetDB,
-        getCount
+        resetDB
     }
 
 }
