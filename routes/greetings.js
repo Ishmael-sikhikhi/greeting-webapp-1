@@ -68,7 +68,7 @@ module.exports = function (greetingsService) {
     async function resetDB(req, res) {
         await greetingsService.deletes()
          req.flash('info', 'Database has successfully resetted!')
-        // 
+         req.body.message = ''
         return res.redirect('/');
     };
 
