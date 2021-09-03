@@ -7,7 +7,7 @@ module.exports = function (greetingsService) {
     let message = ''
     let names = []
 
-    async function home(req, res) {
+    async function start(req, res) {
 
         Count = await greetingsService.countNames()
 
@@ -78,7 +78,7 @@ module.exports = function (greetingsService) {
 
     return {
         greet,
-        home,
+        start,
         all,
         times,
         resetDB

@@ -61,7 +61,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(express.static('public'));
 
-app.get("/", greeingsRoutes.home);
+app.get("/", greeingsRoutes.start);
 app.post('/greet',greeingsRoutes.greet);
 app.get('/greeted', greeingsRoutes.all);
 
