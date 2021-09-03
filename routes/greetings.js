@@ -3,6 +3,23 @@ const GreetingsService = require('../services/greetings-services');
 
 module.exports = function (greetingsService) {
 
+    let Count = 0;
+    let message = ''
+    let names = []
+
+    async function home(req, res) {
+
+        Count = await greetingsService.countNames()
+
+        res.render('index', {
+            Count,
+            message,
+            names
+        })
+
+        return count
+    };
+
     async function greet(req, res) {
         try {
             var name = req.body.enteredName
@@ -13,35 +30,34 @@ module.exports = function (greetingsService) {
             else if (!lang) {
                 req.flash('error', 'Please select a language')
             }
-            else if (!name ) {
+            else if (!name) {
                 req.flash('error', 'Please enter a name')
             }
 
-            else if(name, lang){
+            else if (name, lang) {
+                message = await greetingsService.setLanguage({
+                    name: name,
+                    language: lang
+                })
                 res.render('index', {
-                    message: await greetingsService.setLanguage({
-                        name: name,
-                        language: lang
-                    })
+                    message
                 });
             }
+
         }
         catch (err) {
             console.error('Error occured on greet!', err)
             netx(err)
         }
+        res.redirect("/");
     };
 
-    async function count(req, res) {
-        res.render('index', {
-            count: await greetingsService.countNames()
-        })
-    };
     async function all(req, res) {
-        var names = await greetingsService.getNames()
+        names = await greetingsService.getNames()
         res.render('greeted', {
             names
         });
+        res.redirect("/");
     };
     async function times(req, res) {
         const selectedName = req.params.name;
@@ -52,6 +68,7 @@ module.exports = function (greetingsService) {
             selectedName,
             counter
         })
+        res.redirect("/");
     };
     async function resetDB(req, res) {
         await greetingsService.deletes()
@@ -61,12 +78,17 @@ module.exports = function (greetingsService) {
         })
     };
 
+    function getCount(req, res) {
+        res.render('index', { count })
+    }
+
     return {
         greet,
-        count,
+        home,
         all,
         times,
         resetDB,
+        getCount
     }
 
 }
