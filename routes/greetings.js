@@ -49,7 +49,7 @@ module.exports = function (greetingsService) {
             console.error('Error occured on greet!', err)
             netx(err)
         }
-        return res.redirect("/");
+        return res.redirect('/');
     };
 
     async function all(req, res) {
@@ -72,7 +72,7 @@ module.exports = function (greetingsService) {
         await greetingsService.deletes()
          req.flash('info', 'Database has successfully resetted!')
         // 
-        return res.redirect("/");
+        return res.redirect('/');
     };
 
 
