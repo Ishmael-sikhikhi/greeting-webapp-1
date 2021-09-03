@@ -17,7 +17,6 @@ module.exports = function (greetingsService) {
             names
         })
 
-        return count
     };
 
     async function greet(req, res) {
@@ -39,9 +38,7 @@ module.exports = function (greetingsService) {
                     name: name,
                     language: lang
                 })
-                res.render('index', {
-                    message
-                });
+               
             }
 
         }
