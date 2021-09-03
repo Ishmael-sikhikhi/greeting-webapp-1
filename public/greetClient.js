@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             errorMessageElem.innerHTML = '';
             infoElem.innerHTML = '';
+            
         }, 3000);
     }
 
