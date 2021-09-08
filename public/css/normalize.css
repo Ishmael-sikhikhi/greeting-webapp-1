@@ -9,7 +9,6 @@
 
 html,
 body {
-  height: 100%;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -17,16 +16,14 @@ body {
   top: 0;
   font-size: 100%;
   background-color:  rgb(252, 255, 91);
-  overflow: hidden;  
 }
 .container {   
   width: 80%;    
   margin-left: 10%;
-  margin-right: 10%;
-  overflow: hidden;  
+  margin-right: 10%; 
 }
 .main{
-  border: solid blue;
+  margin-top: 6%;
   height: 400px;
   margin-left: 20%;
   margin-right: 20%;
@@ -35,29 +32,41 @@ body {
 
 .myheading{
   text-align: center;
-  color: yellow;
-  background-color: blue;
+  font-weight: bolder;
+  font-size: 60px;
+  background-color: #FADADD;
   margin-top: 0%;
   margin-left: 0%;
   margin-right: 5%;
 }
 .messages{
+  background-color: rgb(252, 255, 91);
+  padding: 20px;
+  margin-bottom: 5%;
   margin-left: 50%;
   width: 100%;
   height: 30px;
 }
 
+
 button{
   border-radius:8px;
-  width: 90px;
-  background-color: blue;
+  font-size: larger;
+  width: 130px;
+  padding: 5px 5px 5px 5px;
+  background-color: #FADADD;
   color: #000;
   padding: 2px;
   margin: auto;
   }
 .nameInput{
-    padding-top: 25px;
+    padding-top: 5px;
     margin-left: 10%;
+}
+
+.greeted{
+  font-size: larger;
+  margin-top: 5%;
 }
 
 
@@ -124,9 +133,11 @@ ul{
 
 .enterName{
   display: flex;
-  justify-content: center;
   width: 70;
-  margin-left: 15;
+  margin-left: 25%;
+}
+.enterName input{
+  margin-top: 12%;
 }
 .counter{
   color: rgb(19, 19, 65);
@@ -137,7 +148,6 @@ ul{
 }
 .error{
   color: crimson;
-  margin-right: 50%;
 }
 .buttons{
   width: 100%;
@@ -174,10 +184,6 @@ ul{
   margin-top: 3%;
 }
 
-.clearfix {
-  overflow: auto;
-  zoom: 1;
-}
 .footer{
   display: flex;
   justify-content: space-between;
@@ -307,7 +313,8 @@ ul{
   }
   .buttons{
     display: flex;  
-    justify-content: center;
+    margin-left:28%;
+    margin-right: 28%;
   }
   .resetBtn{
     margin-left: 40%;
@@ -327,7 +334,6 @@ ul{
   .languages{
     display: flex;
     width: 70%;   
-    justify-content: center; 
     justify-content: space-around;
     margin-left: 15%;
     margin-right: 15%;

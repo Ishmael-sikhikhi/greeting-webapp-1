@@ -68,7 +68,7 @@ app.get('/greeted', greeingsRoutes.all);
 app.get('/greeted-times/:name',greeingsRoutes.times)
 app.post('/reset', greeingsRoutes.resetDB);
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3000
 
 app.listen(PORT, () => {
     console.log(`App started at port:${PORT}`)

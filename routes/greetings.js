@@ -51,6 +51,7 @@ module.exports = function (greetingsService) {
 
     async function all(req, res) {
         names = await greetingsService.getNames()
+        console.log(names)
         res.render('greeted', {
             names
         });

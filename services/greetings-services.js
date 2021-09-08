@@ -66,7 +66,7 @@ module.exports = function GreetingsService(pool) {
     async function getNames() {
         var thenames = await pool.query(`select name from users`)
         greetName = thenames.rows
-        return thenames.rows
+        return greetName
     }
 
     //how many timeseach name has been greeted

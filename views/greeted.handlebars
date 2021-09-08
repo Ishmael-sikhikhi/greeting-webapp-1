@@ -1,9 +1,18 @@
-<ul>
-    {{#each names}}
-    <li name="{{name}}"><strong><a href="/greeted-times/{{name}}"><h4>{{name}}</h4></a></strong></li>
-    {{/each}}
-</ul> 
+<div class="main  clearfix">
+    <div class="header">
+        <label for="greetings">
+            <H1 class="myheading"><strong>Greetings</strong></H1>
+        </label>
+    </div>
+    <ul>
+        {{#each names}}
+        <li name="{{name}}"><strong><a href="/greeted-times/{{name}}">
+                    <h4>{{name}}</h4>
+                </a></strong></li>
+        {{/each}}
+    </ul>
 
-<div class="thenames"></div>
+    <div class="thenames"></div>
 
-<label style="text-decoration: underline; margin-left: 50px"><strong><a href="/">Main pages</a></strong></label>
+    <label style="text-decoration: underline; margin-left: 50px"><strong><a href="/">Main pages</a></strong></label>
+</div>
